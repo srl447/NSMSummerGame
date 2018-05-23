@@ -360,6 +360,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &951789201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951789195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b9b4ba3fc85c7429593f298eefb2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1573107095042902, guid: f5924acd86bd4014e889d4635a9a55f6, type: 2}
 --- !u!1 &1367937898
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +536,10 @@ Prefab:
         type: 2}
       propertyPath: m_Color.g
       value: 0.40782997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683456516103680, guid: e78e626584b240d4b9f6e783ec27979f, type: 2}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e78e626584b240d4b9f6e783ec27979f, type: 2}
