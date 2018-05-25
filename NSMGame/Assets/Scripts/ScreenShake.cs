@@ -8,7 +8,7 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
 
-    public static float shakeStrength = 0f;
+    public float shakeStrength = 0f;
 
     Vector3 startPosition;
 
@@ -29,10 +29,10 @@ public class ScreenShake : MonoBehaviour
         );
 
         // control shake strength
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         { // debug
             shakeStrength = 10f;
-        }
+        }*/
         shakeStrength = Mathf.Lerp(shakeStrength, 0f, Time.deltaTime * 5f); // bring it back down to 0
 
     }

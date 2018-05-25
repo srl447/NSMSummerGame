@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimer;
 
     private bool dash;
-    public bool isDashing; 
+    public bool isDashing;
+
+    public ScreenShake sS;
 
     //private bool rightDash;
     //private bool leftDash;
@@ -85,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         {
             dash = true;
             isDashing = true; //just to give dash a cooldown, needs better naming convention
+            sS.shakeStrength = 10f;
             StartCoroutine(Dashing(vel));
         }
 
@@ -96,7 +99,8 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Dashing(Vector2 dir)
     {
         float holdDashVel = dashVel; //we want to reset the dash vel later, but edit the value so we hold it here
-        for (int i = 0; i < 60; i++)
+        //for (int i = 0; i < 60; i++)
+        while(dashVel > 1)
         {
             yield return new WaitForFixedUpdate();
             vel = dir * dashVel;
@@ -108,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         dashVel = holdDashVel;
         dash = false;
 
-        yield return new WaitForSeconds(3); //3 seconds cooldown on dash
+        yield return new WaitForSeconds(1); //1 seconds cooldown on dash
         isDashing = false;
     }
 }

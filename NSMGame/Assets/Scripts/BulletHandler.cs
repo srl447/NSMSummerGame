@@ -7,6 +7,8 @@ public class BulletHandler : MonoBehaviour {
     public Vector3 direction;
     public bool isReflected = false;
 
+    public float bulletSpeed;
+
 	// Use this for initialization
 	void Start () {
 		direction = (GameObject.Find("Player").transform.position - transform.position).normalized; // find a path toward the player's position
@@ -14,7 +16,7 @@ public class BulletHandler : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        transform.position += direction * 5 * Time.deltaTime; //move bullet toward the player's position
+        transform.position += direction * bulletSpeed * Time.deltaTime; //move bullet toward the player's position
 
         if (transform.position.x >= 20 || transform.position.y >= 15 || transform.position.x <= -20 || transform.position.y <= -15)
         {
@@ -34,7 +36,7 @@ public class BulletHandler : MonoBehaviour {
             }
             else
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
         if (col.gameObject.tag == "Player")

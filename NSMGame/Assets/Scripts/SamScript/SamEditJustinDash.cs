@@ -15,8 +15,9 @@ public class SamEditJustinDash : MonoBehaviour {
     private bool rightDash;
     private bool leftDash;
     private bool upDash;
-    private bool downDash; 
+    private bool downDash;
 
+    bool dash, isDashing;
     Vector2 vel;
 
 	// Use this for initialization
@@ -74,7 +75,7 @@ public class SamEditJustinDash : MonoBehaviour {
         {
          dash = true;
          isDashing = true; //just to give dash a cooldown, needs better naming convention
-         StartCoroutine(Dashing(vel))
+         StartCoroutine(Dashing(vel));
         }
 
         //Moves the player after the inputs have been taken into account
@@ -84,17 +85,14 @@ public class SamEditJustinDash : MonoBehaviour {
     //dashes the player in the direction their going
     IEnumerator Dashing(Vector2 dir)
     {
-        float holdDashVel = dashVel; //we want to reset the dash vel later, but edit the value so we hold it here
-        for (int i = 0; i < 60; i++)
+        /*for (float i = dashVel; i > 1; i/2)
         {
             yield return new WaitForFixedUpdate();
-            vel = dir*dashVel;
-            //lerps the dash for game feel
-            dashVel=dashVel/2;
+            vel = dir*i;
         }
 
         //set everything back to end the dash
-        dashVel = holdDashVel;
+        //dashVel = holdDashVel;/*/
         dash = false;
 
         yield return new WaitForSeconds(3); //3 seconds cooldown on dash
