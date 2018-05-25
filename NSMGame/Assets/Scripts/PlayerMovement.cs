@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimer;
 
     private bool dash;
-    private bool isDashing; 
+    public bool isDashing; 
 
     //private bool rightDash;
     //private bool leftDash;
