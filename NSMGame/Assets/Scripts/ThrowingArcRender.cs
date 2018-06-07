@@ -6,6 +6,8 @@ public class ThrowingArcRender : MonoBehaviour {
 
     LineRenderer lr;
 
+    public ObjectThrow ot;
+
     public float velocity;
     public float angle;
     public int resolution;
@@ -16,6 +18,12 @@ public class ThrowingArcRender : MonoBehaviour {
     Vector3 mousePos = new Vector3(0, 0, 0);
     public GameObject player;
     Vector3 playerPos = new Vector3(0, 0, 0);
+
+    public float apexY;
+    public float pexY;
+
+    public Vector3[] arcArray;
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -47,12 +55,16 @@ public class ThrowingArcRender : MonoBehaviour {
     void RenderArc()
     {
         lr.SetVertexCount(resolution + 1);
-        lr.SetPositions(CalculateArcArray());
+        if (!ot.start)
+        {
+            lr.SetPositions(CalculateArcArray());
+        }
+        
     }
 
     Vector3[] CalculateArcArray()
     {
-        Vector3[] arcArray = new Vector3[resolution + 1];
+        arcArray = new Vector3[resolution + 1];
 
         
         float distance = Vector3.Distance(mousePos, playerPos);
@@ -89,6 +101,14 @@ public class ThrowingArcRender : MonoBehaviour {
             else
             {
                 arcArray[i] = CalculateArcPoint(t, mousePos.x - playerPos.x, Mathf.Abs(mousePos.y - playerPos.y));
+                if (arcArray[i].y > apexY)
+                {
+                    apexY = arcArray[i].y;
+                }
+                if (arcArray[i].y < pexY)
+                {
+                    pexY = arcArray[i].y;
+                }
             }
         }
         return arcArray;
