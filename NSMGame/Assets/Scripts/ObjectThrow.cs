@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class ObjectThrow : MonoBehaviour {
 
+
     public ThrowingArcRender tar;
+
+    public GameManager gM;
 
     public bool start = false;
 
     int nextPosIndex = 0;
 
+    public Vector3[] copyArcArray;
+
     Rigidbody2D rb = new Rigidbody2D();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         rb = GetComponent<Rigidbody2D>();
     }
 	
@@ -23,10 +28,14 @@ public class ObjectThrow : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space) && !!!start)
         {
-            transform.position = tar.arcArray[0];
+            copyArcArray = tar.arcArray;
+            for (int i = 0; i < copyArcArray.Length; i++)
+            {
+                copyArcArray[i] += transform.position;
+            }
             nextPosIndex = 1;
-            
             start = true;
+            transform.parent = null;
         }
         if (start)
         {
@@ -36,8 +45,8 @@ public class ObjectThrow : MonoBehaviour {
             }
             try
             {
-                rb.MovePosition(/*new Vector2(transform.position.x + .001f, */tar.arcArray[nextPosIndex]);
-                if (transform.position.y > tar.arcArray[nextPosIndex].y - .5f)
+                rb.MovePosition(/*new Vector2(transform.position.x + .001f, */copyArcArray[nextPosIndex]);
+                if (transform.position.y > copyArcArray[nextPosIndex].y - .5f)
                 {
                     nextPosIndex += 6 - (int)Mathf.Ceil(5 * transform.position.y / (tar.apexY - tar.pexY));
 
@@ -50,10 +59,15 @@ public class ObjectThrow : MonoBehaviour {
             catch (System.IndexOutOfRangeException e)
             {
                 Debug.Log("error");
-                rb.MovePosition(tar.arcArray[tar.arcArray.Length - 1]);
+                rb.MovePosition(copyArcArray[copyArcArray.Length - 1]);
                 start = false;
+                gM.item = null;
             }
-            
+            if (transform.position == copyArcArray[copyArcArray.Length - 1])
+            {
+                start = false;
+                gM.item = null;
+            }
         }
 	}
 }
