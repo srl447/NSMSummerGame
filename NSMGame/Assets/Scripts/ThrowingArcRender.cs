@@ -24,8 +24,11 @@ public class ThrowingArcRender : MonoBehaviour {
 
     public Vector3[] arcArray;
 
+    bool waited = false;
+
     void Awake()
     {
+        StartCoroutine(wait());
         lr = GetComponent<LineRenderer>();
         g = Mathf.Abs(Physics2D.gravity.y);
     }
@@ -55,9 +58,12 @@ public class ThrowingArcRender : MonoBehaviour {
     void RenderArc()
     {
         lr.SetVertexCount(resolution + 1);
-        if (!ot.start)
+        if (waited)
         {
-            lr.SetPositions(CalculateArcArray());
+            if (!gM.item.GetComponent<ObjectThrow>().start)
+            {
+                lr.SetPositions(CalculateArcArray());
+            }
         }
         
     }
@@ -93,7 +99,13 @@ public class ThrowingArcRender : MonoBehaviour {
 
         for (int i = 0; i <= resolution; i++)
         {
-            float t = (float)i / (float)resolution;
+            if (i == 0)
+            {
+                arcArray[i] = new Vector3(0,0, playerPos.z);
+            }
+            else
+            {
+                float t = (float)i / (float)resolution;
             if (playerPos.x == mousePos.x)
             {
                 //arcArray[i] = CalculateArcPointStraightUp(t, Mathf.Abs(mousePos.y - playerPos.y));
@@ -110,6 +122,8 @@ public class ThrowingArcRender : MonoBehaviour {
                     pexY = arcArray[i].y;
                 }
             }
+            }
+            
         }
         return arcArray;
     }
@@ -123,9 +137,9 @@ public class ThrowingArcRender : MonoBehaviour {
         */
 
         float x = t * maxDistancex;
-        float a = (playerPos.y - maxDistancey / 3) / Mathf.Pow(playerPos.x - maxDistancex / 3, 2f);
+        float a = (0 - maxDistancey / 3) / Mathf.Pow(0 - maxDistancex / 3, 2f);
         float y;
-        if (mousePos.y > playerPos.y)
+        if (mousePos.y > transform.parent.transform.position.y)
         {
             y = a * Mathf.Pow(x - 2*maxDistancex / 3, 2f) + 4*maxDistancey / 3;
         }
@@ -146,7 +160,16 @@ public class ThrowingArcRender : MonoBehaviour {
         //also make object stop following arc upon collision
             //use raycasts from each vertex on the arc?
 
-        return new Vector3(playerPos.x, y);
+        return new Vector3(0, y);
     }
 
+    IEnumerator wait()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        waited = true;
+    }
 }
