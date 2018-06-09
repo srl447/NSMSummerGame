@@ -16,13 +16,14 @@ public class PickUpObject : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.CompareTag("stick") && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.tag == "stick" && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log(other.name);
-            gM.pickUp = other.gameObject;
+            gM.item = other.gameObject;
+            Debug.Log("done");
             other.gameObject.transform.parent = transform;
             other.gameObject.GetComponent<ObjectThrow>().enabled = true;
         }
