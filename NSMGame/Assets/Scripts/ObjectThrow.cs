@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectThrow : MonoBehaviour {
 
+
     public ThrowingArcRender tar;
 
     public bool start = false;
@@ -13,7 +14,7 @@ public class ObjectThrow : MonoBehaviour {
     Rigidbody2D rb = new Rigidbody2D();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         rb = GetComponent<Rigidbody2D>();
     }
 	
@@ -25,7 +26,7 @@ public class ObjectThrow : MonoBehaviour {
         {
             transform.position = tar.arcArray[0];
             nextPosIndex = 1;
-            
+            transform.parent = null;
             start = true;
         }
         if (start)
