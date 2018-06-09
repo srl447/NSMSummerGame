@@ -7,6 +7,7 @@ public class ThrowingArcRender : MonoBehaviour {
     LineRenderer lr;
 
     public ObjectThrow ot;
+    public GameManager gM;
 
     public float velocity;
     public float angle;
@@ -28,11 +29,13 @@ public class ThrowingArcRender : MonoBehaviour {
     {
         lr = GetComponent<LineRenderer>();
         g = Mathf.Abs(Physics2D.gravity.y);
+        ot = gM.item.GetComponent<ObjectThrow>();
+        RenderArc();
     }
 
 	// Use this for initialization
 	void Start () {
-        RenderArc();
+        //RenderArc();
 	}
 	
 	// Update is called once per frame
