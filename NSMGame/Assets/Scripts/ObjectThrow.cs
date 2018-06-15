@@ -26,7 +26,7 @@ public class ObjectThrow : MonoBehaviour {
 	void FixedUpdate () {
         //tar.arcArray
 
-        if (Input.GetKeyDown(KeyCode.Space) && !!!start)
+        if (Input.GetMouseButtonDown(0) && !!!start)
         {
             copyArcArray = tar.arcArray;
             for (int i = 0; i < copyArcArray.Length; i++)
