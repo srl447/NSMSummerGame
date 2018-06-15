@@ -11,6 +11,13 @@ public class NewPlayerMovement : MonoBehaviour
     public float secondspressedleft = 0f;
     public float speedleft = -0.1f;
     public float maxspeedleft = -0.5f;
+
+    public float verticalspeed = 0.0f;
+    public float maxfallspeed = -0.2f;
+    public float gravity = 10000.0f;
+    public float initialjumpspeed = 1000.0f;
+
+    public bool onGround;
     // Use this for initialization
     void Start()
     {
@@ -22,10 +29,37 @@ public class NewPlayerMovement : MonoBehaviour
     {
         PlayerMove();
     }
+
     void PlayerMove()
     {
+
     float truespeed = speed + (acceleration * secondspressed);
     float truespeedback = -(speed + (acceleration * secondspressedleft));
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(0, 10);
+            //this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100));
+            onGround = false;
+        }
+
+        //gravity
+        //if (verticalspeed >= -0.2f && !onGround)
+        //{
+        //    verticalspeed += -0.01f;
+        //}
+
+        //verticalspeed -= 0.001f;
+        //gameObject.transform.Translate(new Vector2(0, verticalspeed));
+        Debug.Log(this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+        if(this.GetComponent<Rigidbody2D>().velocity.y > 0)
+        {
+            this.gameObject.layer = 8;
+        }
+        else
+        {
+            this.gameObject.layer = 0;
+        }
         if (Input.GetKey(KeyCode.D))
         {
             secondspressed += .166f;
@@ -66,5 +100,27 @@ public class NewPlayerMovement : MonoBehaviour
         }
         
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Platform" && collision.transform.position.y < this.transform.position.y)
+    //    {
+    //        verticalspeed = 0.0f;
+    //        onGround = true;
+    //        //collision.GetComponent<NewPlayerMovement>().verticalspeed = 0.0f;
+    //        //collision.GetComponent<NewPlayerMovement>().onPlatform = true;
+    //    }
+    //}
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Platform" && collision.transform.position.y < this.transform.position.y)
+    //    {
+    //        verticalspeed = 0.0f;
+    //        onGround = true;
+    //        //collision.GetComponent<NewPlayerMovement>().verticalspeed = 0.0f;
+    //        //collision.GetComponent<NewPlayerMovement>().onPlatform = true;
+    //    }
+    //}
 
 }

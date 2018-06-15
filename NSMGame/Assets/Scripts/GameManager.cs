@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(item);
+        //Debug.Log(item);
         if (item)
         {
             player.GetComponentInChildren<ThrowingArcRender>().enabled = true;
