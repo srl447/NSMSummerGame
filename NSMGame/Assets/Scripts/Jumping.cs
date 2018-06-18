@@ -15,7 +15,7 @@ public class Jumping : MonoBehaviour {
     {
 		if (Input.GetKey(KeyCode.Space))
         {
-            this.GetComponent<RigidBody2D>().AddForce(new Vector2(0, 1));
+            //this.GetComponent<RigidBody2D>().AddForce(new Vector2(0, 1));
         }
 	}
 }
