@@ -6,12 +6,15 @@ public class EnemyMovement : MonoBehaviour
 {
 
     public Rigidbody2D rb;
+	public BoxCollider2D box; 
 
     public float moveVel;
 
     private bool reverse;
 
     private Vector3 vel;
+
+	private bool grounded; 
 
     // Use this for initialization
     void Start()
@@ -22,6 +25,8 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+		Grounded ();
 
         if (transform.position.x >= 7.55f)
         {
@@ -61,6 +66,19 @@ public class EnemyMovement : MonoBehaviour
 
 
         rb.MovePosition(transform.position + vel);
-
+	
     }
+
+	void Grounded(){
+		Vector2 pt1 = transform.TransformPoint(box.offset + new Vector2(box.size.x / 2, -box.size.y / 2));
+		Vector2 pt2 = transform.TransformPoint(box.offset - (box.size / 2) + new Vector2(0, 0));
+		grounded = Physics2D.OverlapArea(pt1, pt2, LayerMask.GetMask("Floor")) != null;
+
+		if (!grounded && moveVel > 0) {
+			vel.x = -moveVel; 
+		} else if (!grounded && moveVel < 0) {
+			vel.x = moveVel; 
+		}
+	}
+
 }
