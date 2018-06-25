@@ -12,10 +12,10 @@ public class NewPlayerMovement : MonoBehaviour
     public float speedleft = -0.1f;
     public float maxspeedleft = -0.5f;
 
-    public float verticalspeed = 0.0f;
-    public float maxfallspeed = -0.2f;
-    public float gravity = 10000.0f;
-    public float initialjumpspeed = 1000.0f;
+    //public float verticalspeed = 0.0f;
+    //public float maxfallspeed = -0.2f;
+    //public float gravity = 10000.0f;
+    //public float initialjumpspeed = 1000.0f;
 
     public bool onGround;
     // Use this for initialization
@@ -50,7 +50,7 @@ public class NewPlayerMovement : MonoBehaviour
 
         //verticalspeed -= 0.001f;
         //gameObject.transform.Translate(new Vector2(0, verticalspeed));
-        Debug.Log(this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        //Debug.Log(this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
         if(this.GetComponent<Rigidbody2D>().velocity.y > 0)
         {
