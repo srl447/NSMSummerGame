@@ -39,27 +39,29 @@ public class EnemyMovement : MonoBehaviour
 
         if (reverse)
         {
-            RaycastHit2D playerDetectorReverse = Physics2D.Raycast(transform.position, -Vector2.right, 7f, LayerMask.GetMask("Player"));
+            RaycastHit2D playerDetectorReverse = Physics2D.Raycast(transform.position, -Vector2.right, 10f, LayerMask.GetMask("Player"));
             if (playerDetectorReverse.collider == null)
             {
+                moveVel = .09f;
                 vel.x = -moveVel;
             }
             else if (playerDetectorReverse.collider.CompareTag("Player"))
             {
-                moveVel = -.18f;
-                vel.x = moveVel;
+                moveVel = .3f;
+                vel.x = -moveVel;
             }
         }
         else
         {
-            RaycastHit2D playerDetector = Physics2D.Raycast(transform.position, Vector2.right, 7f, LayerMask.GetMask("Player"));
+            RaycastHit2D playerDetector = Physics2D.Raycast(transform.position, Vector2.right, 10f, LayerMask.GetMask("Player"));
             if (playerDetector.collider == null)
             {
+                moveVel = .09f;
                 vel.x = moveVel;
             }
             else if (playerDetector.collider.gameObject.CompareTag("Player"))
             {
-                moveVel = .18f;
+                moveVel = .3f;
                 vel.x = moveVel;
             }
         }
