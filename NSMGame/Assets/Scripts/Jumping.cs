@@ -20,14 +20,23 @@ public class Jumping : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if (Input.GetKey(KeyCode.W) && rb.velocity.y == 0)
+	void FixedUpdate () {
+        Debug.Log(rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.W) && rb.velocity.y == 0)
         {
             rb.velocity += Vector2.up * jumpMultiplier;
         }
-        if (rb.velocity.y < 0)
+        else if (rb.velocity.y > 6)
         {
             Physics2D.gravity = new Vector2(0, gravity * gravityMultiplier);
+        }
+        else if (rb.velocity.y < -1)
+        {
+            Physics2D.gravity = new Vector2(0, gravity * gravityMultiplier * 2);
+        }
+        else
+        {
+            Physics2D.gravity = new Vector2(0, gravity);
         }
 	}
 }

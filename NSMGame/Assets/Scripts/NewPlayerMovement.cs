@@ -35,12 +35,12 @@ public class NewPlayerMovement : MonoBehaviour
 
     float truespeed = speed + (acceleration * secondspressed);
     float truespeedback = -(speed + (acceleration * secondspressedleft));
-        if (Input.GetKeyDown(KeyCode.W))
+        /*if (Input.GetKeyDown(KeyCode.W))
         {
             this.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(0, 10);
             //this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100));
             onGround = false;
-        }
+        }*/
 
         //gravity
         //if (verticalspeed >= -0.2f && !onGround)
