@@ -31,7 +31,7 @@ public class ScreenShake : MonoBehaviour
         // control shake strength
         if (Input.GetKeyDown(KeyCode.Space))
         { // debug
-            shakeStrength = 10f;
+            shakeStrength = 2f;
         }
         shakeStrength = Mathf.Lerp(shakeStrength, 0f, Time.deltaTime * 5f); // bring it back down to 0
 

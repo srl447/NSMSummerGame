@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Debug.Log(item);
-        if (item)
+        /*if (item)
         {
             player.GetComponentInChildren<ThrowingArcRender>().enabled = true;
         }
         else
         {
             player.GetComponentInChildren<ThrowingArcRender>().enabled = false;
-        }
+        }*/
 		
 	}
 }
