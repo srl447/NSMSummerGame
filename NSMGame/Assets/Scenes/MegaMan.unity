@@ -295,9 +295,10 @@ GameObject:
   - component: {fileID: 758701602}
   - component: {fileID: 758701601}
   - component: {fileID: 758701603}
+  - component: {fileID: 758701604}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,6 +417,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c25f5480d93e7543a4a83dd246040a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &758701604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 758701598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69e7bfd5e39e3d458be02631931cd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 158873939}
+  bullet: {fileID: 1066770514154562, guid: c6500cc8af2d69d4098b33de620bd2d1, type: 2}
+  bulletDistance: -1.5
+  enemyRange: 20
+  bulletRate: 0.8
 --- !u!1 &1149527153
 GameObject:
   m_ObjectHideFlags: 0
