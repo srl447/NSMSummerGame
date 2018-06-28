@@ -8,6 +8,7 @@ TagManager:
   - stick
   - Platform
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

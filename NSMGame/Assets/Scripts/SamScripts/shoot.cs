@@ -18,7 +18,16 @@ public class shoot : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject newBullet = Instantiate(bullet) as GameObject;
-            newBullet.transform.position = transform.position + new Vector3(bulletDistance, 0);
+            if (this.GetComponent<SpriteRenderer>().flipX == false)
+            {
+                newBullet.transform.position = transform.position + new Vector3(bulletDistance, 0);
+                bullet.GetComponent<BulletMove>().flipped = false;
+            }
+            else
+            {
+                newBullet.transform.position = transform.position + new Vector3(-bulletDistance, 0);
+                bullet.GetComponent<BulletMove>().flipped = true;
+            }
         }
 		
 	}

@@ -62,9 +62,11 @@ public class NewPlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
+            this.GetComponent<SpriteRenderer>().flipX = false; //flips the player's sprite 
             secondspressed += .166f;
             if (Input.GetKey(KeyCode.A))
             {
+                this.GetComponent<SpriteRenderer>().flipX = true;
                 secondspressed = 0;
             }
             if (truespeed < maxspeed)
@@ -79,9 +81,11 @@ public class NewPlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A))
         {
+            this.GetComponent<SpriteRenderer>().flipX = true; //flips the players sprite
             secondspressedleft += .166f;
             if (Input.GetKey(KeyCode.D))
             {
+                this.GetComponent<SpriteRenderer>().flipX = false;
                 secondspressedleft = 0;
             }
             if (truespeedback > -(maxspeed))
