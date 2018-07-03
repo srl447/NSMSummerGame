@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Bullet
   - Enemy
+  - Floor
   layers:
   - Default
   - TransparentFX
