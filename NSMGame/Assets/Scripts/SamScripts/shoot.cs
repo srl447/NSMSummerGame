@@ -15,7 +15,7 @@ public class shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.O))
         {
             GameObject newBullet = Instantiate(bullet) as GameObject;
             if (this.GetComponent<SpriteRenderer>().flipX == false)
