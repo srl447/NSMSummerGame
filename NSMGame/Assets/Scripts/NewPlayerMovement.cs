@@ -11,7 +11,8 @@ public class NewPlayerMovement : MonoBehaviour
     public float secondspressedleft = 0f;
     public float speedleft = -0.1f;
     public float maxspeedleft = -0.5f;
-
+    public float truespeed = 0f;
+    public float truespeedback = 0f;
     //public float verticalspeed = 0.0f;
     //public float maxfallspeed = -0.2f;
     //public float gravity = 10000.0f;
@@ -33,8 +34,8 @@ public class NewPlayerMovement : MonoBehaviour
     void PlayerMove()
     {
 
-    float truespeed = speed + (acceleration * secondspressed);
-    float truespeedback = -(speed + (acceleration * secondspressedleft));
+        truespeed = speed + (acceleration * secondspressed);
+        truespeedback = -(speed + (acceleration * secondspressedleft));
         /*if (Input.GetKeyDown(KeyCode.W))
         {
             this.gameObject.GetComponent<Rigidbody2D>().velocity += new Vector2(0, 10);
@@ -52,7 +53,7 @@ public class NewPlayerMovement : MonoBehaviour
         //gameObject.transform.Translate(new Vector2(0, verticalspeed));
         //Debug.Log(this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
-        if(this.GetComponent<Rigidbody2D>().velocity.y > 0)
+        if (this.GetComponent<Rigidbody2D>().velocity.y > 0)
         {
             this.gameObject.layer = 8;
         }
@@ -69,13 +70,13 @@ public class NewPlayerMovement : MonoBehaviour
             }
             if (truespeed < maxspeed)
             {
-            gameObject.transform.Translate(new Vector2(speed + (acceleration * secondspressed), 0));
+                gameObject.transform.Translate(new Vector2(speed + (acceleration * secondspressed), 0));
             }
             else
             {
                 gameObject.transform.Translate(new Vector2(maxspeed, 0));
             }
-            
+
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -98,7 +99,7 @@ public class NewPlayerMovement : MonoBehaviour
             secondspressed = 0;
             secondspressedleft = 0;
         }
-        
+
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
