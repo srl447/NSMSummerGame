@@ -15,10 +15,19 @@ public class shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.O))
         {
             GameObject newBullet = Instantiate(bullet) as GameObject;
-            newBullet.transform.position = transform.position + new Vector3(bulletDistance, 0);
+            if (this.GetComponent<SpriteRenderer>().flipX == false)
+            {
+                newBullet.GetComponent<BulletMove>().flipped = false;
+                newBullet.transform.position = transform.position + new Vector3(bulletDistance, 0);
+            }
+            else if (this.GetComponent<SpriteRenderer>().flipX == true)
+            {
+                newBullet.GetComponent<BulletMove>().flipped = true;
+                newBullet.transform.position = transform.position + new Vector3(-bulletDistance, 0);
+            }
         }
 		
 	}
