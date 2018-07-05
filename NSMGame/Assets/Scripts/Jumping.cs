@@ -26,11 +26,11 @@ public class Jumping : MonoBehaviour {
         {
             rb.velocity += Vector2.up * jumpMultiplier;
         }
-        else if (rb.velocity.y > 6)
+        else if (rb.velocity.y > 3)
         {
             Physics2D.gravity = new Vector2(0, gravity * gravityMultiplier);
         }
-        else if (rb.velocity.y < -1)
+        else if (rb.velocity.y < -.5)
         {
             Physics2D.gravity = new Vector2(0, gravity * gravityMultiplier * 2);
         }
