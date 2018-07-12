@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public float interpVelocity;
     public Vector3 offset;
     Vector3 targetPos;
+    public float followSharpness = 0.1f;
 
     // Use this for initialization
     void Start()
@@ -19,10 +20,11 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, transform.position.z), Time.deltaTime * 10f);
+    void Update()
+    {   // Compute our exponential smoothing factor.
+    	// lerp is an exponential moving average. So if we want to correct it for deltaTime, a linear adjustment won't do. We need an exponential adjustment.
+    	float blend = 1f - Mathf.Pow(1f - followSharpness, Time.deltaTime * 60f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, transform.position.z), blend);
 
 
         /*distance = player.transform.position.x - transform.position.x;
