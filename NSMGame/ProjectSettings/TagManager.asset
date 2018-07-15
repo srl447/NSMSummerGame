@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Box
+  - stick
+  - Platform
+  - Bullet
+  - Enemy
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -13,13 +19,13 @@ TagManager:
   - UI
   - 
   - 
+  - Player
+  - Floor
+  - Bullet
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Stick
   - 
   - 
   - 

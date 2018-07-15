@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,7 +39,6 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
-  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -55,10 +54,11 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -193,7 +193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4396414982967938, guid: 6c31846f0dee6544183c942de19ad2ef, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1731394042860794, guid: 6c31846f0dee6544183c942de19ad2ef, type: 2}
       propertyPath: m_Name
@@ -250,6 +250,7 @@ Prefab:
     - {fileID: 61271393406243272, guid: 6c31846f0dee6544183c942de19ad2ef, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6c31846f0dee6544183c942de19ad2ef, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< Updated upstream
 --- !u!1 &381386150
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +309,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -354,6 +354,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &439023417
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +370,7 @@ GameObject:
   - component: {fileID: 439023418}
   - component: {fileID: 439023424}
   - component: {fileID: 439023421}
+  - component: {fileID: 439023422}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -436,7 +439,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -486,6 +488,20 @@ MonoBehaviour:
   secondspressedleft: 0
   speedleft: -0.1
   maxspeedleft: -0.5
+--- !u!114 &439023422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 439023417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d44d27ddecd45c47a6c1b5577fde39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpMultiplier: 12
+  gravityMultiplier: 2
+  gravity: -9.81
 --- !u!4 &439023423
 Transform:
   m_ObjectHideFlags: 0
@@ -494,7 +510,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 439023417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.11, y: -2.26, z: 0}
+  m_LocalPosition: {x: -7.02, y: -2.56, z: 0}
   m_LocalScale: {x: 1.0875479, y: 1.6489202, z: 0.27154556}
   m_Children:
   - {fileID: 1996216874}
@@ -514,28 +530,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gM: {fileID: 67252253}
---- !u!1 &1234658135
+--- !u!1 &1234658135 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1731394042860794, guid: 6c31846f0dee6544183c942de19ad2ef,
     type: 2}
   m_PrefabInternal: {fileID: 373892937}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1234658140}
-  - component: {fileID: 1234658139}
-  - component: {fileID: 1234658138}
-  - component: {fileID: 1234658137}
-  - component: {fileID: 1234658136}
-  - component: {fileID: 1234658142}
-  - component: {fileID: 1234658141}
-  m_Layer: 0
-  m_Name: stick
-  m_TagString: stick
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &1234658136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +571,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+<<<<<<< Updated upstream
 --- !u!50 &1234658138
 Rigidbody2D:
   serializedVersion: 4
@@ -607,7 +607,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -653,6 +652,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!61 &1234658141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -693,6 +694,25 @@ MonoBehaviour:
   gM: {fileID: 67252253}
   start: 0
   copyArcArray: []
+  appliedForce: 0
+--- !u!114 &1234658143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1234658135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec7a6d7ed5f55f4f9d3a12bdedc3b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ot: {fileID: 1234658142}
+  takenArcArray: []
+  applying: 0
+  started: 0
+  commence: 0
+  time: 0
+  tester: {x: 0, y: 0}
 --- !u!1001 &1523869355
 Prefab:
   m_ObjectHideFlags: 0
@@ -896,7 +916,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4396414982967938, guid: 6c31846f0dee6544183c942de19ad2ef, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4396414982967938, guid: 6c31846f0dee6544183c942de19ad2ef, type: 2}
       propertyPath: m_LocalScale.x
