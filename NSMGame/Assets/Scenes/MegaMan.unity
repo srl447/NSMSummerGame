@@ -167,6 +167,8 @@ MonoBehaviour:
   secondspressedleft: 0
   speedleft: -0.1
   maxspeedleft: -0.5
+  truespeed: 0
+  truespeedback: 0
   onGround: 0
 --- !u!114 &158873942
 MonoBehaviour:
@@ -717,6 +719,7 @@ GameObject:
   - component: {fileID: 1704003723}
   - component: {fileID: 1704003722}
   - component: {fileID: 1704003726}
+  - component: {fileID: 1704003727}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -798,3 +801,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4f483aa3d9b5840ac6a0c6e7df477f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1704003727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704003721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299a13d82062fff4aa87af4c450cac97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  interpVelocity: 0
+  offset: {x: 0, y: 0, z: 0}
+  followSharpness: 0.1
