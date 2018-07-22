@@ -15,6 +15,8 @@ public class ObjectThrow : MonoBehaviour {
 
     public Vector3[] copyArcArray;
 
+    public bool appliedForce;
+
     Rigidbody2D rb = new Rigidbody2D();
 
 	// Use this for initialization
@@ -25,7 +27,6 @@ public class ObjectThrow : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         //tar.arcArray
-
         if (Input.GetKeyDown(KeyCode.Space) && !!!start)
         {
             copyArcArray = tar.arcArray;
@@ -39,6 +40,7 @@ public class ObjectThrow : MonoBehaviour {
         }
         if (start)
         {
+            appliedForce = false;
             if (nextPosIndex == tar.arcArray.Length - 1)
             {
                 start = false;
@@ -68,6 +70,10 @@ public class ObjectThrow : MonoBehaviour {
                 start = false;
                 gM.item = null;
             }
+        }
+        else
+        {
+            appliedForce = true;
         }
 	}
 }
