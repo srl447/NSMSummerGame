@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Health : MonoBehaviour {
 
     [SerializeField]
     private Stat health1;
@@ -17,10 +17,16 @@ public class Player : MonoBehaviour {
     private Stat health4;
 
     [SerializeField]
-    private Stat regen;
+    private Stat regen1;
+
+    [SerializeField]
+    private Stat regen2;
 
     [SerializeField]
     private BarScript shield;
+
+    [SerializeField]
+    private BarScript shield2;
 
     private float hitcount;
 
@@ -28,14 +34,16 @@ public class Player : MonoBehaviour {
 
     private bool shieldDelay;
 
-	// Use this for initialization
-	private void Awake ()
+    // Use this for initialization
+    private void Awake()
     {
         health1.Initialize();
         health2.Initialize();
         health3.Initialize();
         health4.Initialize();
-        regen.Initialize();
+        regen1.Initialize();
+        regen2.Initialize();
+
     }
     private void Start()
     {
@@ -44,27 +52,32 @@ public class Player : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             playerHit = true;
             shieldDelay = true;
-            if (hitcount == 0)
+            if (regen1.CurrentVal > 0)
             {
-                if (regen.CurrentVal > 0)
-                {
-                    regen.CurrentVal -= 50;
-                }else
-                { 
+                regen1.CurrentVal -= 100;
+            }
+            else if (regen2.CurrentVal > 0)
+            {
+                regen2.CurrentVal -= 100;
+            }
+            else if (hitcount == 0)
+            {
+
                 hitcount = 1;
                 health1.CurrentVal -= 100;
-                }
-            }else if(hitcount == 1)
+            }
+            else if (hitcount == 1)
             {
                 hitcount = 2;
                 health2.CurrentVal -= 100;
-            }else if (hitcount == 2)
+            }
+            else if (hitcount == 2)
             {
                 hitcount = 3;
                 health3.CurrentVal -= 100;
@@ -79,6 +92,7 @@ public class Player : MonoBehaviour {
         {
             playerHit = false;
         }
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (hitcount == 1)
@@ -108,9 +122,10 @@ public class Player : MonoBehaviour {
             StartCoroutine(ShieldRegenerationCooldown());
         }
     }
+
     IEnumerator ShieldRegenerationCooldown()
     {
-        if (regen.CurrentVal < regen.MaxVal)
+        if (regen1.CurrentVal == 0)
         {
             if (shieldDelay == true)
             {
@@ -118,11 +133,14 @@ public class Player : MonoBehaviour {
                 yield return new WaitForSeconds(3);
                 if (shieldDelay == false)
                 {
-                    shield.lerpSpeed = 2;
-                    regen.CurrentVal += 100;
+                    shield.lerpSpeed = 50;
+                    shield2.lerpSpeed = 50;
+                    regen1.CurrentVal += 100;
+                    regen2.CurrentVal += 100;
                 }
             }
-            shield.lerpSpeed = 10;
+            shield.lerpSpeed = 2;
+            shield2.lerpSpeed = 2;
         }
     }
 }
