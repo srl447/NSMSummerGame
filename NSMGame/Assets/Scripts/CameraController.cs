@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 
     public NewPlayerMovement player;
     private float distance;
+    private float distancey;
     public float interpVelocity;
     public Vector3 offset;
     public Vector3 leftOffset;
@@ -28,18 +29,35 @@ public class CameraController : MonoBehaviour
     	float blend = 1f - Mathf.Pow(1f - followSharpness, Time.deltaTime * 60f);
        	
        	distance = transform.position.x - player.transform.position.x;
+        distancey = transform.position.y - player.transform.position.y;
+
        	Debug.Log(distance);
-       	Debug.Log(player.directionLeft);
+        Debug.Log(distancey);
+       	//Debug.Log(player.directionLeft);
 
-       	if(distance <= offset.x && !player.directionLeft)
+       	if(!player.directionLeft)
        	{
-       		transform.position = new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z);
-       	}
-       	if(distance >= leftOffset.x && player.directionLeft)
+          transform.position = new Vector3(transform.position.x, player.transform.position.y + offset.y, transform.position.z);
+          if (distance <= offset.x)//moving right 
+          {
+            transform.position = new Vector3(player.transform.position.x + offset.x, transform.position.y/*player.transform.position.y + offset.y*/, transform.position.z);
+          }
+          else if (distance >= offset.x*2)//moving left
+          {
+            transform.position = new Vector3(player.transform.position.x + offset.x*2, transform.position.y/*player.transform.position.y + offset.y*/, transform.position.z);
+          }
+        }
+       	if(player.directionLeft)
        	{
-       		transform.position = new Vector3(player.transform.position.x + leftOffset.x, transform.position.y, transform.position.z);
+          transform.position = new Vector3(transform.position.x, player.transform.position.y + offset.y, transform.position.z);
+          if (distance >= leftOffset.x)
+          {
+            transform.position = new Vector3(player.transform.position.x + leftOffset.x, transform.position.y/*player.transform.position.y + offset.y*/, transform.position.z);
+          }
+          else if (distance <= leftOffset.x*2)
+          {
+            transform.position = new Vector3(player.transform.position.x + leftOffset.x*2, transform.position.y/*player.transform.position.y + offset.y*/, transform.position.z);
+          }
        	}
-    }
-
-    
+    }    
 }
