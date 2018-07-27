@@ -54,7 +54,10 @@ public class Health : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        GameObject Player = GameObject.Find("Player");
+        PlayerDamage playerDmg = Player.GetComponent<PlayerDamage>();
+        
+        if (playerDmg.isHurt)
         {
             playerHit = true;
             shieldDelay = true;
