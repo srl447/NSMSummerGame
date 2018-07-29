@@ -13,6 +13,7 @@ public class NewPlayerMovement : MonoBehaviour
     public float maxspeedleft = -0.5f;
     public float truespeed = 0f;
     public float truespeedback = 0f;
+    public bool directionLeft = false;
     //public float verticalspeed = 0.0f;
     //public float maxfallspeed = -0.2f;
     //public float gravity = 10000.0f;
@@ -128,4 +129,16 @@ public class NewPlayerMovement : MonoBehaviour
     //    }
     //}
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.name == "MoveLeftCameraTrigger")
+        {
+            directionLeft = true;
+            Debug.Log("LEFT");
+        }
+        if (col.gameObject.name == "MoveRightCameraTrigger")
+        {
+            directionLeft = false;
+        }
+    }
 }
