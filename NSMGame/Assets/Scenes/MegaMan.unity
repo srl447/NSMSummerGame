@@ -186,8 +186,9 @@ MonoBehaviour:
     m_Bits: 512
   raycastStart: {x: 0, y: 0}
   raycastAdd: {x: 0, y: 0, z: 0}
-  jumpHeightStart: -0.95
-  jumpSpeed: 0.07
+  jumpSpeedUp: 0.3
+  jumpSpeedDown: 0.1
+  jumpGraphLocation: -2
   floatsies: 0
 --- !u!212 &158873943
 SpriteRenderer:
@@ -241,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 158873939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.81, y: -3.605, z: 0}
+  m_LocalPosition: {x: -6.73, y: -3.65, z: 0}
   m_LocalScale: {x: 0.13200957, y: 0.13495313, z: 0.3904988}
   m_Children: []
   m_Father: {fileID: 0}
@@ -413,7 +414,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &758701602
 BoxCollider2D:
   m_ObjectHideFlags: 0

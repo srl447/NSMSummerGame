@@ -15,14 +15,16 @@ public class Jumping : MonoBehaviour
     public RaycastHit2D jumpCheck;
 
     float jumpHeight;
-    public float jumpHeightStart;
-    public float jumpSpeed;
+    float jumpHeightStart;
+    float jumpSpeed;
+    public float jumpSpeedUp, jumpSpeedDown; //legnth of the trapezoid, smaller = more trapezoids = slower
+    public float jumpGraphLocation; //left edge of trapezoid
     Vector3 jumpPosition;
     bool isJumping;
     public float floatsies;
     void Awake()
     {
-        jumpHeight = jumpHeightStart;
+        jumpHeightStart = jumpGraphLocation;
     }
     // Use this for initialization
     void Start()
@@ -62,22 +64,30 @@ public class Jumping : MonoBehaviour
         }
         if (isJumping)
         {
-            jumpPosition = new Vector3(transform.position.x, transform.position.y + -(Mathf.Pow(jumpHeight, 3)), transform.position.z);
-            if (jumpHeight < 0)
+            if (jumpGraphLocation < 0)
             {
-                jumpHeight += jumpSpeed;
+                jumpSpeed = jumpSpeedUp;
             }
             else
             {
-                jumpHeight += jumpSpeed;
+                jumpSpeed = jumpSpeedDown;
             }
+            //Calculate the area under the curve using trapezoidal rule
+            jumpHeight = (.5f) * jumpSpeed * (-Mathf.Pow(jumpGraphLocation, 3) + -Mathf.Pow(jumpGraphLocation+jumpSpeed, 3));
+            //set the next location to start the trapezoid
+            jumpGraphLocation += jumpSpeed;
+            //Sets the next position for the player
+            jumpPosition = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
+            //moves the player
             rb.MovePosition(jumpPosition);
+            //Debug.Log(jumpHeight);
         }
-        if(jumpCheck.collider.tag == "Floor" && jumpHeight >= 0)
+        if(jumpCheck.collider.tag == "Floor" && jumpGraphLocation >= 0)
         {
-            jumpHeight = jumpHeightStart;
+            jumpGraphLocation = jumpHeightStart;
             isJumping = false;
         }
 
     }
+    
 }
