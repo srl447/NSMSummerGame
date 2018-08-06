@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 158873947}
   - component: {fileID: 158873948}
   - component: {fileID: 158873949}
+  - component: {fileID: 158873950}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -416,6 +417,19 @@ MonoBehaviour:
     currentVal: 100
   shield: {fileID: 541004714}
   shield2: {fileID: 2098881522}
+--- !u!114 &158873950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158873939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaa448725c13d448a956ca45e1a1767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHurt: 0
+  invincible: 0
 --- !u!1 &302235502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +1031,7 @@ GameObject:
   - component: {fileID: 836053677}
   m_Layer: 0
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
