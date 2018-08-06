@@ -7,7 +7,7 @@ public class Float : MonoBehaviour {
     public float floatDuration;
     bool canFloat;
     bool floatStart;
-
+    public float gravity;
 	
 	void Start () {
 		
@@ -30,7 +30,7 @@ public class Float : MonoBehaviour {
         }
         else
         {
-            GetComponent<Rigidbody2D>().gravityScale = 1;
+            GetComponent<Rigidbody2D>().gravityScale = gravity;
             GetComponent<Jumping>().enabled = true;
         }
 	}
