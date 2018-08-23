@@ -18,8 +18,8 @@ public class EnemyChange : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            collision.gameObject.tag = "Floor";
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            Destroy(this.gameObject);
         }
+        Physics2D.IgnoreLayerCollision(8, 13);
     }
 }

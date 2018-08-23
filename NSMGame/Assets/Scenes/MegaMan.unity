@@ -169,6 +169,7 @@ MonoBehaviour:
   maxspeedleft: -0.5
   truespeed: 0
   truespeedback: 0
+  directionLeft: 0
   onGround: 0
 --- !u!114 &158873942
 MonoBehaviour:
@@ -330,7 +331,7 @@ GameObject:
   - component: {fileID: 758701601}
   - component: {fileID: 758701603}
   - component: {fileID: 758701604}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -822,6 +823,7 @@ MonoBehaviour:
   player: {fileID: 158873941}
   interpVelocity: 0
   offset: {x: 2, y: 0.1, z: 0}
+  leftOffset: {x: 0, y: 0, z: 0}
   followSharpness: 0.1
 --- !u!1 &1834178316
 GameObject:
